@@ -1,0 +1,157 @@
+/* Milexio — yasal sayfalar. Dış yazı tipi/servis yüklenmez (gizlilik). */
+:root {
+  --mavi: #0052CC;
+  --murekkep: #16202E;
+  --ikincil: #4A5668;
+  --kagit: #FFFFFF;
+  --sis: #F2F5F9;
+  --cizgi: #DCE3EC;
+  --serit: #F2B705;
+  --odak: #0052CC;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --mavi: #7AA7F5;
+    --murekkep: #E6EAF0;
+    --ikincil: #A3AEBE;
+    --kagit: #12171F;
+    --sis: #1A212C;
+    --cizgi: #2A3341;
+    --odak: #7AA7F5;
+  }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--kagit);
+  color: var(--murekkep);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.65;
+}
+a { color: var(--mavi); text-underline-offset: 0.18em; }
+a:focus-visible, summary:focus-visible { outline: 3px solid var(--odak); outline-offset: 3px; border-radius: 3px; }
+
+/* Üst şerit */
+.ust {
+  border-bottom: 1px solid var(--cizgi);
+  background: var(--kagit);
+}
+.ust-ic {
+  max-width: 46rem;
+  margin: 0 auto;
+  padding: 0.9rem 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem 1.5rem;
+}
+.marka {
+  font-weight: 800;
+  font-size: 1.2rem;
+  letter-spacing: -0.01em;
+  color: var(--murekkep);
+  text-decoration: none;
+}
+.ust nav { display: flex; flex-wrap: wrap; gap: 0.25rem 1.1rem; font-size: 0.95rem; }
+.ust nav a { color: var(--ikincil); text-decoration: none; }
+.ust nav a:hover { color: var(--mavi); text-decoration: underline; }
+.ust nav a[aria-current="page"] { color: var(--murekkep); font-weight: 650; }
+
+/* İçerik */
+main {
+  max-width: 46rem;
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 4rem;
+}
+h1 {
+  font-size: clamp(1.9rem, 5vw, 2.6rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.6rem;
+}
+/* Akılda kalan tek öğe: başlık altındaki şerit çizgisi */
+.serit {
+  height: 6px;
+  margin: 1.1rem 0 1.6rem;
+  background: repeating-linear-gradient(90deg, var(--serit) 0 2.4rem, transparent 2.4rem 3.6rem);
+  border-radius: 2px;
+}
+.ozet { color: var(--ikincil); font-size: 1.1rem; margin: 0; max-width: 38rem; }
+.tarih { color: var(--ikincil); font-size: 0.92rem; margin: 0.4rem 0 0; }
+h2 {
+  font-size: 1.35rem;
+  line-height: 1.3;
+  margin: 2.6rem 0 0.6rem;
+  scroll-margin-top: 1rem;
+}
+h3 { font-size: 1.08rem; margin: 1.6rem 0 0.4rem; }
+p, ul, ol, table { margin: 0 0 1rem; }
+ul, ol { padding-left: 1.3rem; }
+li { margin: 0.25rem 0; }
+p, li { max-width: 68ch; }
+
+/* İçindekiler */
+.icindekiler {
+  background: var(--sis);
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  margin: 0 0 1rem;
+}
+.icindekiler p { margin: 0 0 0.4rem; font-weight: 650; }
+.icindekiler ol { margin: 0; }
+
+/* Tablolar: dar ekranda kendi içinde kayar */
+.tablo-kap { overflow-x: auto; margin: 0 0 1rem; }
+table { border-collapse: collapse; width: 100%; min-width: 34rem; font-size: 0.97rem; }
+th, td { text-align: left; vertical-align: top; padding: 0.6rem 0.75rem; border-bottom: 1px solid var(--cizgi); }
+th { font-weight: 650; background: var(--sis); }
+
+/* Önemli bilgi kutusu */
+.bilgi {
+  border-left: 4px solid var(--mavi);
+  background: var(--sis);
+  padding: 0.9rem 1.1rem;
+  border-radius: 0 8px 8px 0;
+  margin: 0 0 1.2rem;
+}
+.bilgi p:last-child { margin-bottom: 0; }
+
+/* Ana sayfa dizini */
+.dizin { list-style: none; padding: 0; margin: 2rem 0; }
+.dizin li { max-width: none; margin: 0; padding: 1.1rem 0; border-top: 1px solid var(--cizgi); }
+.dizin li:last-child { border-bottom: 1px solid var(--cizgi); }
+.dizin a { font-size: 1.15rem; font-weight: 650; }
+.dizin span { display: block; color: var(--ikincil); margin-top: 0.15rem; }
+
+/* Adımlar (gerçek bir sıra olduğu için numaralı) */
+.adimlar { counter-reset: adim; list-style: none; padding: 0; }
+.adimlar li { counter-increment: adim; position: relative; padding-left: 2.6rem; margin: 0.8rem 0; }
+.adimlar li::before {
+  content: counter(adim);
+  position: absolute; left: 0; top: 0.05rem;
+  width: 1.8rem; height: 1.8rem;
+  border-radius: 50%;
+  background: var(--mavi); color: var(--kagit);
+  font-weight: 700; font-size: 0.95rem;
+  display: grid; place-items: center;
+}
+
+footer {
+  border-top: 1px solid var(--cizgi);
+  color: var(--ikincil);
+  font-size: 0.92rem;
+}
+.alt-ic { max-width: 46rem; margin: 0 auto; padding: 1.5rem 1.25rem 2.5rem; }
+.alt-ic p { margin: 0 0 0.3rem; }
+
+/* Dar ekranda tablolar yana kaymak yerine alt alta dizilir */
+@media (max-width: 40rem) {
+  table { min-width: 0; }
+  thead { display: none; }
+  tr { display: block; border-bottom: 1px solid var(--cizgi); padding: 0.7rem 0; }
+  td { display: block; border: 0; padding: 0.15rem 0; }
+  td:first-child { font-weight: 650; }
+}
